@@ -1,0 +1,21 @@
+      SUBROUTINE RANSET(ISEED)
+      INCLUDE 'ising.inc'
+C
+      IF (ISEED .LE. 0) ISEED=12345678
+C
+      RETURN
+      END
+C
+      REAL FUNCTION RANF()
+      INCLUDE 'ising.inc'
+C
+      INTEGER IA, IC, IM
+      PARAMETER (IA=1103515245)
+      PARAMETER (IM=2147483647)
+C
+      ISEED = MOD(IA*ISEED + IC, IM)
+C
+      RANF=FLOAT(ISEED)/FLOAT(IM)
+C
+      RETURN
+      END
