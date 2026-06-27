@@ -18,8 +18,8 @@ C
       REAL TEMP
       PARAMETER (TEMP=2.269)
 C
-      REAL J
-      PARAMETER (J=1.0)
+      REAL JCOUP
+      PARAMETER (JCOUP=1.0)
 C
 C Define the spin lattice
 C

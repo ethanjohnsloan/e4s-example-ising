@@ -18,8 +18,8 @@ C
             IF (IP .GT. L) IP=1
             JP = J+1
             IF (JP .GT. L) JP=1
-            E = E - J*SPIN(I,J)*SPIN(IP,J)
-            E = E - J*SPIN(I,J)*SPIN(I,JP)
+            E = E - JCOUP*SPIN(I,J)*SPIN(IP,J)
+            E = E - JCOUP*SPIN(I,J)*SPIN(I,JP)
  10      CONTINUE
  20   CONTINUE
 C

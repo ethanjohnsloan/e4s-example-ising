@@ -1,3 +1,5 @@
+      SUBROUTINE INIT
+
 C Initialize Ising model spin config
 C
       INCLUDE 'ising.inc'
@@ -8,7 +10,7 @@ C
 C
 C Initialize random number generator seed
 C
-      CALL RANSET(ISEED)
+      CALL RANSET
 C
       DO 20 I=1, L
          DO 10 J=1, L

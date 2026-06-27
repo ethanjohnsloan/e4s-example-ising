@@ -22,7 +22,9 @@ C
 C
        CALL MAGNETIZATION(M)
 C
-       CALL OUTPUT(STEP,E,M)
+       IF (MOD(STEP,100) .EQ. 0) THEN
+          CALL SNAPSHOT(STEP)
+       ENDIF
 C
  100  CONTINUE
 C

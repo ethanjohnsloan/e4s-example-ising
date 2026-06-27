@@ -5,9 +5,9 @@ C
 C
       INTEGER I,J,N
       INTEGER IM, IP, JM, JP
-      REAL R, RANF
-      REAL DE
-      REAL BETA
+      REAL R, RANF, DE, BETA
+C
+      EXTERNAL RANF
 C
       BETA = 1.0/TEMP
 C
@@ -27,8 +27,8 @@ C        Periodic BCs
          IF (JM .LT. 1) JM=L
 C        Compute energy change
          DE = 2.0*SPIN(I,J)*
-      $       (SPIN(IP,J) + SPIN(IM,J) +
-      $       SPIN(I,JP) + SPIN(I,JM))
+     $        (SPIN(IP,J) + SPIN(IM,J) +
+     $        SPIN(I,JP) + SPIN(I,JM))
          IF (DE .LE. 0.0) THEN
             SPIN(I,J)=-SPIN(I,J)
          ELSE

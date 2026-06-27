@@ -1,34 +1,27 @@
       SUBROUTINE SNAPSHOT(STEP)
-C
-C Spin configs into CSV file for plotting in Python (i,j,s(ij))
-C
+
       INCLUDE 'ising.inc'
-C
-      INTEGER I,J,STEP
-      CHARACTER*20 FNAME
+
+      INTEGER I, J, STEP
+      CHARACTER*40 FNAME
       INTEGER UNIT
-C
-C Writes a snapshot file only occasionally
-C
-      IF (MOD(STEP,NSNAP) .NE. 0) RETURN
-C
-C Create the filename
-C
+
+      UNIT = 20 + STEP
+
       WRITE(FNAME,100) STEP
- 100  FORMAT('spin_',I6.6,'.dat')
-C
-      UNIT=20+MOD(STEP,10)
-      OPEN(UNIT,FILE=FNAME,STATUS='UNKNOWN')
-C
-C Write the lattice file
-C
-      DO 20 I=1,L
-         DO 10 J=1,L
-            WRITE(UNIT,*) I, J, SPIN(I,J)
- 10      CONTINUE
- 20   CONTINUE
-C
+100   FORMAT('../output/spin_',I6.6,'.dat')
+
+      OPEN(UNIT=UNIT, FILE=FNAME, STATUS='UNKNOWN')
+
+      DO I = 1, L
+         DO J = 1, L
+            WRITE(UNIT,200) I, J, SPIN(I,J)
+         END DO
+      END DO
+
+200   FORMAT(I4,1X,I4,1X,I2)
+
       CLOSE(UNIT)
-C
+
       RETURN
       END
