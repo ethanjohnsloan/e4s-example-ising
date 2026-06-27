@@ -22,7 +22,7 @@ C
 C
        CALL MAGNETIZATION(M)
 C
-       IF (MOD(STEP,100) .EQ. 0) THEN
+       IF (MOD(STEP,25) .EQ. 0) THEN
           CALL SNAPSHOT(STEP)
        ENDIF
 C
