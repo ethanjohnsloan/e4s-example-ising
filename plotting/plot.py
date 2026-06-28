@@ -1,20 +1,9 @@
-import numpy as np
+import h5py
 import matplotlib.pyplot as plt
-import glob
-import imageio.v2 as imageio
-files = sorted(glob.glob("output/spin_*.dat"))
 
-frames = []
+f = h5py.File("ising.h5", "r")
 
-for f in files:
-    data = np.loadtxt(f)
-    L = int(np.sqrt(len(data)))
-    grid = data[:, 2].reshape((L, L))
+data = f["/spins"][:]   # (time, L, L)
 
-    plt.imshow(grid, cmap="bwr", vmin=-1, vmax=1, origin="lower")
-    plt.axis("off")
-
-    plt.savefig("frame.png")
-    frames.append(imageio.imread("frame.png"))
-
-imageio.mimsave("ising.gif", frames, fps=5)
+plt.imshow(data[-1], cmap="bwr", vmin=-1, vmax=1)
+plt.show()
